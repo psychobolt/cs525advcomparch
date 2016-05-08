@@ -1,5 +1,6 @@
 // To compile:
-// ~/simplescalar/bin/sslittle-na-sstrix-gcc quicksort.c lib/mt19937-64/mt19937-64.c -I/usr/include -o bin/quicksort
+// ~/simplescalar/bin/sslittle-na-sstrix-gcc quicksort.c -I/usr/include -o bin/quicksort
+// Ignore warnings
 //
 // Running this program require parameters
 // See usage by running program wihout parameters
@@ -10,12 +11,9 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include <inttypes.h>
-#include <string.h>
-#include "lib/mt19937-64/mt64.h"
 
-void quick_sort (int64_t *a, int n) {
-	int64_t i, j, p, t;
+void quick_sort (int *a, int n) {
+	int i, j, p, t;
 	if (n < 2)
 		return;
 	p = a[n / 2];
@@ -35,21 +33,21 @@ void quick_sort (int64_t *a, int n) {
 }
 
 void test() {
-	int64_t a[] = {4, 65, 2, -31, 0, 99, 2, 83, 782, 1};
+	int a[] = {4, 65, 2, -31, 0, 99, 2, 83, 782, 1};
   int n = sizeof a / sizeof a[0];
-  int64_t i;
+  int i;
   for (i = 0; i < n; i++)
-		printf("%" PRId64 "%s", a[i], i == n - 1 ? "\n" : " ");
+		printf("%d%s", a[i], i == n - 1 ? "\n" : " ");
 	quick_sort(a, n);
 	for (i = 0; i < n; i++)
-		printf("%" PRId64 "%s", a[i], i == n - 1 ? "\n" : " ");
+		printf("%d%s", a[i], i == n - 1 ? "\n" : " ");
 }
 
 void run(int n) {
-	int64_t* a = malloc(n * sizeof(int64_t));
+	int* a = malloc(n * sizeof(int));
 	int i;
   for (i = 0; i < n; i++) {
-  	a[i] = genrand64_int63();
+  	a[i] = rand();
 	}
 	quick_sort(a, n);
 	free(a);

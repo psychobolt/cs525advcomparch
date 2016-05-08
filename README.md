@@ -25,7 +25,7 @@ Run the programs using SimpleScalar. See source comments for usage.
 For, running quicksort test with default settings:
 ```
 cd cs525advcomparch/programs
-~/simplescalar/simplesim-3.0/sim-cache redir:sim quicksort_test_default.txt ./bin/quicksort test
+~/simplescalar/simplesim-3.0/sim-cache -redir:sim quicksort_test_default.txt ./bin/quicksort test
 ```
 The results, ```quicksort_test_default.txt``` file, should be found under ```cs525advcomparch/programs```
 
